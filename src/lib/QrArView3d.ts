@@ -54,6 +54,13 @@ export class QrArView3d {
         // Average the corners so that we get less jitter
         const avgCorners = this.averageCorners(cornersList);
 
+        const range = this.calculateRangeOfAverageCornerDistance(this.previousCorners);
+        // if the range is is too large, then early exist
+        const rangeThreshold = 5;
+        if (range > rangeThreshold) {
+            return;
+        }
+
         // Debug:
         const topLeft = document.getElementById("topLeft2");
         topLeft.style.top = avgCorners[3].y + "px";
@@ -153,4 +160,29 @@ export class QrArView3d {
         return avgCorners;
     }
 
+    // Findes the range between the perimeters of the quardriangles
+    private calculateRangeOfAverageCornerDistance(previousQuadriangles) {
+        let min = Number.MAX_VALUE;
+        let max = Number.MIN_VALUE;
+        previousQuadriangles.forEach((corners) => {
+            const numOfSides = corners.length - 1;
+            const cumulativeDistance = this.calcPerimeter(corners, numOfSides);
+            const avgDistance = cumulativeDistance / numOfSides;
+            min = Math.min(min, avgDistance);
+            max = Math.max(max, avgDistance);
+        });
+        const range = (max - min) / previousQuadriangles.length;
+        return range;
+    }
+
+    private calcPerimeter(corners, numOfSides) {
+        let cumulativeDistance = 0;
+        for (let i = 0; i < numOfSides; i++) {
+            const first = corners[i];
+            const second = corners[i + 1];
+            const sideDistance = Math.hypot(second.x - first.x, second.y - first.y);
+            cumulativeDistance += sideDistance;
+        }
+        return cumulativeDistance;
+    }
 }
