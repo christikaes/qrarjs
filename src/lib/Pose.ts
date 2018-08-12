@@ -51,6 +51,7 @@ export default class Pose {
 
     public getRotation() {
         const rotationMat = this.bestRotation;
+        // https://en.wikipedia.org/wiki/Rotation_matrix
         return {
             x: -Math.asin(-rotationMat[1][2]),
             y: -Math.atan2(rotationMat[0][2], rotationMat[2][2]),

@@ -1,8 +1,8 @@
-.qrar {
+#qrar {
     position: relative;
 }
 
-.qrar canvas, .qrar video {
+#qrar * {
     position: absolute;
 }
 
@@ -13,6 +13,15 @@
     height: 10px;
     background-color: lightblue;
     border-radius: 50%;
+}
+
+#topRight2,
+#topLeft2,
+#bottomLeft2,
+#bottomRight2 {
+    width: 7px;
+    height: 7px;
+    background-color: red;
 }
 
 .debug #debugOverlay,
