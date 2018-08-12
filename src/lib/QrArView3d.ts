@@ -109,7 +109,7 @@ export class QrArView3d {
 
         // Create scene
         this.scene = new THREE.Scene();
-        this.camera = new THREE.PerspectiveCamera(40, this.width / this.height, 1, 1000);
+        this.camera = new THREE.PerspectiveCamera(40, this.width / this.height, 1, 2000);
         this.scene.add(this.camera);
 
         // Add model
