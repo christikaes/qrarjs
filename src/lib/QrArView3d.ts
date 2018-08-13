@@ -11,7 +11,7 @@ export class QrArView3d {
         private root: HTMLElement,
         private height: number,
         private width: number,
-        private model?: THREE.Mesh,
+        private model?: THREE.Group,
         private modelSize?: number,
     ) {
         if (!model) {
@@ -23,7 +23,7 @@ export class QrArView3d {
                 side: THREE.DoubleSide,
                 transparent: true,
             });
-            model = new THREE.Mesh(geometry, material);
+            // model = new THREE.Mesh(geometry, material);
         }
         this.model = model;
 
@@ -50,7 +50,6 @@ export class QrArView3d {
             { ...corners.topLeft },
         ];
 
-        // TODO-Binam
         // Average the corners so that we get less jitter
         const avgCorners = this.averageCorners(cornersList);
 
@@ -85,7 +84,6 @@ export class QrArView3d {
         }
 
         // Get the rotation/translation of the model based on the corners
-        // TODO-Binam - focalLegnth?
         const posit = new Posit(this.modelSize, this.width);
         const pose = posit.pose(avgCorners);
 

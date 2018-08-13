@@ -13,7 +13,7 @@ export class QrAr {
 
     constructor(
         private root: HTMLElement,
-        private model?: THREE.Mesh,
+        private model?: THREE.Group,
         private modelSize?: number,
     ) {
         if (!root) {
