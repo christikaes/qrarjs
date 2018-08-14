@@ -52,10 +52,15 @@ export default class Pose {
     public getRotation() {
         const rotationMat = this.bestRotation;
         // https://en.wikipedia.org/wiki/Rotation_matrix
+        // Base calculation taken from: http://nghiaho.com/?page_id=846
+        // // y and z were swapped
+        // // x was rotating the wrong way
         return {
-            x: -Math.asin(-rotationMat[1][2]),
-            y: Math.atan2(rotationMat[0][2], rotationMat[2][2]),
-            z: Math.atan2(rotationMat[1][0], rotationMat[1][1]),
+            x: -Math.atan2(rotationMat[2][1], rotationMat[2][2]),
+            y: Math.atan2(rotationMat[1][0], rotationMat[0][0]),
+            z: Math.atan2(-rotationMat[2][0], Math.sqrt(
+                Math.pow(rotationMat[2][1], 2)
+                + Math.pow(rotationMat[2][2], 2))),
         };
     }
 

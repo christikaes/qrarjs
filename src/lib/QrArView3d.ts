@@ -89,7 +89,8 @@ export class QrArView3d {
 
         // Update model
         const rotation = pose.getRotation();
-        this.model.rotation.x = rotation.x;
+        // Add additional rotation to make R2D2 stand up
+        this.model.rotation.x = rotation.x - Math.PI / 2;
         this.model.rotation.y = rotation.y;
         this.model.rotation.z = rotation.z;
 
@@ -98,9 +99,10 @@ export class QrArView3d {
         this.model.position.y = position.y;
         this.model.position.z = position.z;
 
-        this.model.scale.x = this.modelSize;
-        this.model.scale.y = this.modelSize;
-        this.model.scale.z = this.modelSize;
+        const unitScale = 1;
+        this.model.scale.x = unitScale;
+        this.model.scale.y = unitScale;
+        this.model.scale.z = unitScale;
 
         this.renderer.render(this.scene, this.camera);
     }
