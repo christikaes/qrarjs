@@ -18,6 +18,38 @@
             <div id="bottomLeft2"></div>
             <div id="bottomRight2"></div>
         </div>
+
+        <script>
+            // var worker = new Worker("worker.js");
+
+            // WebAssembly.instantiateStreaming(fetch('/optimized.wasm'))
+            //     .then(results => {
+
+            //         // worker.postMessage(results);
+            //         worker.postMessage({ "MessagePurpose": "CompiledModule", "WasmModule": results });
+            //         console.log(results.instance.exports.add(1, 3))
+            //     });
+
+            // WebAssembly.compileStreaming(fetch('optimized.wasm'))
+            //     .then(mod =>
+            //         worker.postMessage(mod)
+            //     );
+
+            // fetch('/optimized.wasm')
+            //     .then(response => {
+            //         return response.arrayBuffer();
+            //     })
+            //     .then(bytes => {
+            //         return WebAssembly.compile(bytes);
+            //     })
+            //     .then(WasmModule => {
+            //         worker.postMessage({ "MessagePurpose": "CompiledModule", "WasmModule": WasmModule });
+            //         // WebAssembly.instantiate(WasmModule)
+            //         //     .then(instance => {
+            //         //         console.log(instance.exports.add(1, 3))
+            //         //     })
+            //     });
+        </script>
     </body>
 
 </html>

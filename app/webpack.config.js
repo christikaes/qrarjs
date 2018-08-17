@@ -6,6 +6,7 @@ require("babel-polyfill");
 module.exports = {
     entry: ["babel-polyfill", './src/main.ts'],
     output: {
+        webassemblyModuleFilename: "[modulehash].wasm",
         filename: './bundle.[hash].js'
     },
     resolve: {
@@ -43,7 +44,38 @@ module.exports = {
                 use: {
                     loader: "ts-loader"
                 }
+            },
+            {
+                test: /worker\.js$/,
+                use: {
+                    loader: 'worker-loader',
+                    options: {
+                        name: 'js/worker.[hash].js'
+                    }
+                }
+            },
+            {
+                test: /\.wasm$/,
+                type: 'javascript/auto',
+                use: [
+                    {
+                        loader: 'file-loader',
+                        options: {
+                            name: 'wasm/[name].[hash].[ext]',
+                            publicPath: '../'
+                        }
+                    }
+                ]
             }
+            // {
+            //     test: /\.wasm$/,
+            //     use: {
+            //         loader: 'wasm-loader',
+            //         options: {
+            //             mimetype: 'application/wasm'
+            //         }
+            //     }
+            // }
         ]
     },
     plugins: [
@@ -53,7 +85,8 @@ module.exports = {
         }),
         new ExtractTextPlugin("./styles.[hash].css"),
         new CopyWebpackPlugin([
-            { from: __dirname + "/src/public/", to: "./" }
+            { from: __dirname + "/src/public/", to: "./" },
+            { from: "../wasm/build/", to: "./wasm/" },
         ])
     ],
     devServer: {

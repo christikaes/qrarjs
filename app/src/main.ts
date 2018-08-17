@@ -16,13 +16,33 @@ const $ = (selector) => {
 OBJLoader(THREE); // Thanks OBJLoader, this maketh no senth
 const objLoader = new THREE.OBJLoader();
 objLoader
-// .setMaterials(materials);
+    // .setMaterials(materials);
 
- .load("assets/r2-d2.obj", (object) => {
-// .load("assets/pyramid.obj", (object) => {
-    // object.position.y = - 95;
-    const myQrAr = new QrAr($("#qrar"), object);
-});
+    .load("assets/r2-d2.obj", (object) => {
+        // .load("assets/pyramid.obj", (object) => {
+        // object.position.y = - 95;
+        const myQrAr = new QrAr($("#qrar"), object);
+    });
 //    });
 
 // const myQrAr = new QrAr($("#qrar"), pass in thinggy here (obj));
+
+// ----------------------------------------
+// WASM
+
+// IF Worker is supported:
+// import * as Worker from "./worker.js";
+
+// const worker = new Worker();
+// worker.postMessage(1);
+// worker.onmessage = (event) => {
+//     console.log("mainthread got:", event.data);
+// };
+
+// Otherwise, just use wasm on main thread
+declare var WebAssembly: any; // ADDED
+WebAssembly.instantiateStreaming(fetch("optimized.wasm"))
+    .then((results) => {
+        console.log(results.instance.exports.add(12, 1));
+
+    });

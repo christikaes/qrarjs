@@ -3,6 +3,7 @@ import { binarize } from "./binarizer";
 import { extract } from "./extractor";
 import { locate, Point } from "./locator";
 import { QrArView3d } from "./QrArView3d";
+declare var WebAssembly: any; // ADDED
 
 // QrAr.js
 // This class takes in an HTMLElement as the root and creates a QrAr in it
@@ -10,6 +11,7 @@ export class QrAr {
     private view3d: QrArView3d;
     private height: number;
     private width: number;
+    private lib: any;
 
     constructor(
         private root: HTMLElement,
@@ -26,6 +28,7 @@ export class QrAr {
     private async setup() {
         const video = await this.setupVideo();
         await this.start(video);
+        await this.setupLib();
         this.view3d = new QrArView3d(this.root, this.height, this.width, this.model, this.modelSize);
     }
 
@@ -44,6 +47,21 @@ export class QrAr {
         video.play();
 
         return video;
+    }
+
+    private async setupLib() {
+        // IF Worker is supported:
+        // import * as Worker from "./worker.js";
+
+        // const worker = new Worker();
+        // worker.postMessage(1);
+        // worker.onmessage = (event) => {
+        //     console.log("mainthread got:", event.data);
+        // };
+
+        // Otherwise, just use wasm on main thread
+        const module = await WebAssembly.instantiateStreaming(fetch("optimized.wasm"));
+        this.lib = module.instance.exports;
     }
 
     private start(video: HTMLVideoElement): Promise<{}> {
@@ -113,6 +131,13 @@ export class QrAr {
                 const bottomRight = document.getElementById("bottomRight");
                 bottomRight.style.top = corners.bottomRight.y + "px";
                 bottomRight.style.left = corners.bottomRight.x + "px";
+
+                // ----------------------------------------
+                // WASM
+
+                const res = this.lib.add(1, 3);
+                console.log(res);
+                // ----------------------------------------
 
                 if (this.view3d) {
                     this.view3d.render(corners);
