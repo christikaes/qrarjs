@@ -60,5 +60,8 @@ module.exports = {
         contentBase: './src/public',
         port: 8080
     },
-    devtool: 'source-map'
+    // devtool: 'source-map'
+    optimization: {
+        minimize: false
+    }
 }
