@@ -5,8 +5,8 @@
   "scripts": {
     "start": "concurrently --kill-others \"npm run copy-wasm-watch\" \"webpack-dev-server --progress\"",
     "build": "rimraf dist && webpack",
-    "copy-wasm": "cpx '../wasm/build/*.wasm' src/public/wasm",
-    "copy-wasm-watch": "cpx '../wasm/build/*.wasm' src/wasm --watch"
+    "copy-wasm": "cpx '../wasm/build/untouched.wasm' src/public",
+    "copy-wasm-watch": "cpx '../wasm/build/untouched.wasm' src/public --watch"
   },
   "author": "",
   "license": "ISC",

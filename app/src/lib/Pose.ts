@@ -63,7 +63,7 @@ export default class Pose {
                 + Math.pow(rotationMat[2][2], 2))),
         };
 
-        console.table(rotation);
+        // console.table(rotation);
 
         return rotation;
     }

@@ -1,0 +1,28 @@
+{
+  "name": "qrar",
+  "version": "1.0.0-alpha",
+  "description": "QRAR is a JavaScript library that uses QR codes as markers for web augmented reality",
+  "main": "dist/index.js",
+  "types": "dist/index.d.ts",
+  "scripts": {
+    "build": "tsc"
+  },
+  "repository": {
+    "type": "git",
+    "url": "github.com/christikaes/qrar"
+  },
+  "keywords": [
+    "Augmented Reality",
+    "JavaScript",
+    "WebAR"
+  ],
+  "author": "Christina Kayastha",
+  "license": "ISC",
+  "devDependencies": {
+    "babel-preset-env": "^1.7.0",
+    "typescript": "^3.0.1"
+  },
+  "dependencies": {
+    "three": "^0.95.0"
+  }
+}

@@ -50,6 +50,7 @@ export class QrAr {
     }
 
     private async setupLib() {
+        console.log("..........");
         // IF Worker is supported:
         // import * as Worker from "./worker.js";
 
@@ -60,8 +61,54 @@ export class QrAr {
         // };
 
         // Otherwise, just use wasm on main thread
-        const module = await WebAssembly.instantiateStreaming(fetch("optimized.wasm"));
-        this.lib = module.instance.exports;
+
+        // const importObject = {
+        //     // env: {
+        //     //     memory: new WebAssembly.Memory({ initial: 256 }),
+        //     //     memoryBase: 0,
+        //     //     table: new WebAssembly.Table({ initial: 0, element: "anyfunc" }),
+        //     //     tableBase: 0,
+        //     // },
+        //     imports: {
+        //         imported_func(arg) {
+        //             console.log(arg);
+        //         },
+        //     },
+        // };
+
+        const importObject = {
+            // imports: {
+            //     imported_func(arg) {
+            //         console.log(arg);
+            //     },
+            // },
+            env: {
+                memory: new WebAssembly.Memory({ initial: 10 }),
+                memoryBase: 500,
+                // table: new WebAssembly.Table({ initial: 0, element: "anyfunc" }),
+                // tableBase: 0,
+                abort: (why) => { console.log("ABORT"); console.log(why); },
+                poseCalculated: (
+                    rotationX: number, rotationY: number, rotationZ: number,
+                    translationX: number, translationY: number, translationZ: number) => {
+                    console.log({
+                        rotationX, rotationY, rotationZ,
+                        translationX, translationY, translationZ,
+                    });
+                },
+            },
+        };
+        // const module = await WebAssembly.instantiateStreaming(fetch("optimized.wasm"), importObject);
+        // this.lib = module.instance.exports;
+        // console.log(this.lib);
+
+        WebAssembly.instantiateStreaming(fetch("untouched.wasm"), importObject)
+            .then((module) => {
+                console.log("---");
+                // console.log(module.instance.exports.add(12, 1));
+                this.lib = module.instance.exports;
+                console.log(this.lib);
+            });
     }
 
     private start(video: HTMLVideoElement): Promise<{}> {
@@ -92,7 +139,19 @@ export class QrAr {
                 const imageData = hiddenCanvasCtx.getImageData(0, 0, this.width, this.height);
 
                 // Binarize the ImageData
+
                 const binarized = binarize(imageData.data, this.width, this.height);
+                if (this.lib) {
+                    // tslint:disable-next-line:no-string-literal
+                    window["lib"] = this.lib;
+                    // tslint:disable-next-line:no-string-literal
+                    window["data"] = imageData.data;
+                    // binarized = this.lib.processQR(imageData.data, this.width, this.height);
+                    // console.log(binarized);
+
+                    const res = this.lib.posit(1, 2, 3);
+                    console.log(res);
+                }
 
                 // Locate the QR Code
                 let location = locate(binarized);
@@ -116,27 +175,29 @@ export class QrAr {
                     topRight: extracted.mappingFunction(location.dimension, 0),
                 };
 
-                const topLeft = document.getElementById("topLeft");
-                topLeft.style.top = corners.topLeft.y + "px";
-                topLeft.style.left = corners.topLeft.x + "px";
+                // const topLeft = document.getElementById("topLeft");
+                // topLeft.style.top = corners.topLeft.y + "px";
+                // topLeft.style.left = corners.topLeft.x + "px";
 
-                const topRight = document.getElementById("topRight");
-                topRight.style.top = corners.topRight.y + "px";
-                topRight.style.left = corners.topRight.x + "px";
+                // const topRight = document.getElementById("topRight");
+                // topRight.style.top = corners.topRight.y + "px";
+                // topRight.style.left = corners.topRight.x + "px";
 
-                const bottomLeft = document.getElementById("bottomLeft");
-                bottomLeft.style.top = corners.bottomLeft.y + "px";
-                bottomLeft.style.left = corners.bottomLeft.x + "px";
+                // const bottomLeft = document.getElementById("bottomLeft");
+                // bottomLeft.style.top = corners.bottomLeft.y + "px";
+                // bottomLeft.style.left = corners.bottomLeft.x + "px";
 
-                const bottomRight = document.getElementById("bottomRight");
-                bottomRight.style.top = corners.bottomRight.y + "px";
-                bottomRight.style.left = corners.bottomRight.x + "px";
+                // const bottomRight = document.getElementById("bottomRight");
+                // bottomRight.style.top = corners.bottomRight.y + "px";
+                // bottomRight.style.left = corners.bottomRight.x + "px";
 
                 // ----------------------------------------
                 // WASM
 
-                const res = this.lib.add(1, 3);
-                console.log(res);
+                // if (this.lib) {
+                //     const res = this.lib.yo(imageData.data);
+                //     console.log(res);
+                // }
                 // ----------------------------------------
 
                 if (this.view3d) {

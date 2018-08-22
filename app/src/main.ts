@@ -40,9 +40,9 @@ objLoader
 // };
 
 // Otherwise, just use wasm on main thread
-declare var WebAssembly: any; // ADDED
-WebAssembly.instantiateStreaming(fetch("optimized.wasm"))
-    .then((results) => {
-        console.log(results.instance.exports.add(12, 1));
+// declare var WebAssembly: any; // ADDED
+// WebAssembly.instantiateStreaming(fetch("optimized.wasm"))
+//     .then((results) => {
+//         console.log(results.instance.exports.add(12, 1));
 
-    });
+//     });

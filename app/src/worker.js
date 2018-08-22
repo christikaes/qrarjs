@@ -1,4 +1,4 @@
-import wasm from './wasm/optimized.wasm';
+import wasm from './public/untouched.wasm';
 
 onmessage = event => {
     WebAssembly.instantiateStreaming(fetch(wasm))
