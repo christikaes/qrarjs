@@ -6,56 +6,30 @@
         <script src="https://threejs.org/examples/js/loaders/OBJLoader.js"></script>
         <script src="https://threejs.org/examples/js/loaders/MTLLoader.js"></script>
         <style>
-            #qrar {
-                position: relative;
+            #qrar2d {
+                float: left;
             }
 
-            #qrar * {
-                position: absolute;
+            #qrar3d {
+                float: right;
             }
 
-            .debug div {
-                border: 1px solid rgb(0, 0, 150);
-                position: fixed;
-                width: 10px;
-                height: 10px;
-                background-color: lightblue;
-                border-radius: 50%;
-            }
-
-            #topRight2,
-            #topLeft2,
-            #bottomLeft2,
-            #bottomRight2 {
-                width: 7px;
-                height: 7px;
-                background-color: red;
-            }
-
-            .debug #debugOverlay,
-            .debug #testDebugOverlay {
-                width: 100px;
+            #panel {
                 height: 100px;
-                border-radius: 0px;
-                background-image: url("https://png.pngtree.com/element_pic/17/09/27/e88531dbf0cf81f4eacba773aa4bb9b0.jpg");
-                background-size: contain;
+                width: 100px;
+                background: lightblue;
             }
         </style>
     </head>
 
     <body>
-        <div id="qrar"></div>
-        <div class="debug" id="debugContainer">
-            <div id="topLeft"></div>
-            <div id="topRight"></div>
-            <div id="bottomLeft"></div>
-            <div id="bottomRight"></div>
-            <div id="debugOverlay"> Hello!!</div>
-            <!-- <div id="testDebugOverlay"></div> -->
-            <div id="topLeft2"></div>
-            <div id="topRight2"></div>
-            <div id="bottomLeft2"></div>
-            <div id="bottomRight2"></div>
+        <div id="demos">
+            <div id="qrar2d">
+                <div id="panel">
+                    Hello there!
+                </div>
+            </div>
+            <div id="qrar3d"></div>
         </div>
     </body>
 
