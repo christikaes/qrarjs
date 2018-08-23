@@ -63,6 +63,12 @@ export default class Pose {
                 + Math.pow(rotationMat[2][2], 2))),
         };
 
+        // const rotation = {
+        //     x: -Math.asin(-rotationMat[1][2]) - Math.PI / 2,
+        //     y: -Math.atan2(rotationMat[0][2], rotationMat[2][2]),
+        //     z: Math.atan2(rotationMat[1][0], rotationMat[1][1])
+        // };
+
         // console.table(rotation);
 
         return rotation;

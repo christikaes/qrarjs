@@ -1,4 +1,3 @@
-import * as THREE from "three";
 import { binarize } from "./binarizer";
 import { extract } from "./extractor";
 import { locate, Point } from "./locator";
@@ -14,8 +13,9 @@ export class QrAr {
     private lib: any;
 
     constructor(
+        private THREE: any,
         private root: HTMLElement,
-        private model?: THREE.Group,
+        private model?: any,
         private modelSize?: number,
     ) {
         if (!root) {
@@ -29,7 +29,7 @@ export class QrAr {
         const video = await this.setupVideo();
         await this.start(video);
         // await this.setupLib();
-        this.view3d = new QrArView3d(this.root, this.height, this.width, this.model, this.modelSize);
+        this.view3d = new QrArView3d(this.THREE, this.root, this.height, this.width, this.model, this.modelSize);
     }
 
     private async setupVideo() {
