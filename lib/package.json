@@ -1,25 +1,34 @@
 {
-  "name": "qrar",
-  "version": "1.0.0-alpha",
-  "description": "QRAR is a JavaScript library that uses QR codes as markers for web augmented reality",
-  "main": "dist/index.js",
-  "types": "dist/index.d.ts",
-  "scripts": {
-    "build": "tsc"
-  },
-  "repository": {
-    "type": "git",
-    "url": "github.com/christikaes/qrar"
-  },
-  "keywords": [
-    "Augmented Reality",
-    "JavaScript",
-    "WebAR"
-  ],
-  "author": "Christina Kayastha",
-  "license": "ISC",
-  "devDependencies": {
-    "babel-preset-env": "^1.7.0",
-    "typescript": "^3.0.1"
-  }
+    "name": "qrarjs",
+    "version": "1.0.0-alpha.1",
+    "description": "QRAR is a JavaScript library that uses QR codes as markers for web augmented reality",
+    "main": "dist/qrar.js",
+    "types": "dist/types/index.d.ts",
+    "scripts": {
+        "build": "rimraf dist && webpack"
+    },
+    "repository": {
+        "type": "git",
+        "url": "https://github.com/christikaes/qrarjs.git"
+    },
+    "keywords": [
+        "Augmented Reality",
+        "JavaScript",
+        "WebAR"
+    ],
+    "author": "Christina Kayastha",
+    "license": "MIT",
+    "devDependencies": {
+        "@types/three": "^0.92.17",
+        "babel-core": "^6.26.3",
+        "babel-loader": "^7.1.5",
+        "babel-preset-env": "^1.7.0",
+        "ts-loader": "^4.5.0",
+        "tslint": "^5.11.0",
+        "tslint-loader": "^3.6.0",
+        "typescript": "^3.0.1",
+        "webpack": "^4.17.1",
+        "webpack-cli": "^3.1.0",
+        "worker-loader": "^2.0.0"
+    }
 }

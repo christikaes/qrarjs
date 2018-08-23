@@ -1,6 +1,6 @@
-
 export default class Vec3 {
 
+    // Subtracts one vector from the other
     public static sub(A: Vec3, B: Vec3): Vec3 {
         const vector = new Vec3();
         const v = vector.v;
@@ -15,6 +15,7 @@ export default class Vec3 {
         return vector;
     }
 
+    // Inverts vector
     public static inverse(A: Vec3) {
         const vector = new Vec3();
         const v = vector.v;
@@ -34,6 +35,7 @@ export default class Vec3 {
         return vector;
     }
 
+    // Adds a scalar to a vector
     public static addScalar(A: Vec3, b: number) {
         const vector = new Vec3();
         const v = vector.v;
@@ -47,6 +49,7 @@ export default class Vec3 {
         return vector;
     }
 
+    // Multiplies two vectors
     public static mult(A: Vec3, B: Vec3) {
         const vector = new Vec3();
         const v = vector.v;
@@ -61,6 +64,7 @@ export default class Vec3 {
         return vector;
     }
 
+    // Dot product of two vectors
     public static dot(A: Vec3, B: Vec3): number {
         const a = A.v;
         const b = B.v;
@@ -68,6 +72,7 @@ export default class Vec3 {
         return a[0] * b[0] + a[1] * b[1] + a[2] * b[2];
     }
 
+    // Multiplies a vector by a scalar
     public static multScalar(A: Vec3, b: number): Vec3 {
         const vector = new Vec3();
         const v = vector.v;
@@ -81,6 +86,7 @@ export default class Vec3 {
         return vector;
     }
 
+    // Adds two vectors
     public static add(A: Vec3, B: Vec3): Vec3 {
         const vector = new Vec3();
         const v = vector.v;
@@ -95,6 +101,7 @@ export default class Vec3 {
         return vector;
     }
 
+    // Cross product of two vectors
     public static cross(A: Vec3, B: Vec3): Vec3 {
         const a = A.v;
         const b = B.v;
@@ -111,6 +118,7 @@ export default class Vec3 {
         this.v = [x, y, z];
     }
 
+    // Copy the given values into this vector
     public copy(a) {
         const v = this.v;
 
@@ -123,6 +131,7 @@ export default class Vec3 {
         return this;
     }
 
+    // Normalize this vector
     public normalize() {
         const v = this.v;
         const len = Math.sqrt(v[0] * v[0] + v[1] * v[1] + v[2] * v[2]);
@@ -136,12 +145,14 @@ export default class Vec3 {
         return len;
     }
 
+    // Square this vector
     public square() {
         const v = this.v;
 
         return v[0] * v[0] + v[1] * v[1] + v[2] * v[2];
     }
 
+    // Find the index of the minimum value of this vector
     public minIndex() {
         const v = this.v;
 

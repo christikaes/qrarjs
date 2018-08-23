@@ -1,4 +1,5 @@
-// Copyright https://github.com/cozmo/jsQR/blob/master/src/binarizer/index.ts
+// Copyright (c) 2018 Cosmo Wolfe
+// https://github.com/cozmo/jsQR/blob/master/src/binarizer/index.ts
 /* tslint:disable */
 
 import { BitMatrix } from "./BitMatrix";

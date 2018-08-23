@@ -1,14 +1,14 @@
 // ImageFeed
 // This class creates a new ImageFeed
-// It uses getUserMedia to request for video access, and for each frame calls the given callback with the image from that frame
+// It uses getUserMedia to request for video access, and for each frame calls the given callback with the imageData
 export async function setupImageFeed(
     root: HTMLElement,
-    callback: (imageData: Uint8ClampedArray, width: number, height: number) => void
+    callback: (imageData: Uint8ClampedArray, width: number, height: number) => void,
 ) {
     // Create a new video element and append it to the root
     const video = document.createElement("video");
-    video.style.position = 'absolute';
-    video.style.zIndex = '-1';
+    video.style.position = "absolute";
+    video.style.zIndex = "-1";
     root.appendChild(video);
 
     // Get a video stream and start the video

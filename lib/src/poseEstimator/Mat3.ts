@@ -24,6 +24,7 @@ export default class Mat3 {
         return matrix;
     }
 
+    // Multiples two matrices
     public static mult(A: Mat3, B: Mat3): Mat3 {
         const M = new Mat3();
         const m = M.m;
@@ -64,6 +65,7 @@ export default class Mat3 {
         return matrix;
     }
 
+    // Creates a matrix from a diagonal vector
     public static fromDiagonal(A: Vec3) {
         const matrix = new Mat3();
         const m = matrix.m;
@@ -77,6 +79,7 @@ export default class Mat3 {
         return matrix;
     }
 
+    // Transposes a matrix
     public static transpose(A: Mat3): Mat3 {
         const matrix = new Mat3();
         const m = matrix.m;
@@ -96,6 +99,7 @@ export default class Mat3 {
         return matrix;
     }
 
+    // Multiplies two vectors
     public static multVector(M: Mat3, A: Vec3): Vec3 {
         const m = M.m;
         const a = A.v;
@@ -105,6 +109,7 @@ export default class Mat3 {
             m[1][0] * a[0] + m[1][1] * a[1] + m[1][2] * a[2],
             m[2][0] * a[0] + m[2][1] * a[1] + m[2][2] * a[2]);
     }
+
     public m: [
         [number, number, number],
         [number, number, number],

@@ -1,3 +1,6 @@
+// Copyright (c) 2018 Cosmo Wolfe
+// https://github.com/cozmo/jsQR/blob/master/src/extractor/index.ts
+/* tslint:disable */
 import { BitMatrix } from "./BitMatrix";
 import { Point, QRLocation } from "./locator";
 

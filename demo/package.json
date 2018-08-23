@@ -1,40 +1,40 @@
 {
-  "name": "qrar-demo",
-  "version": "1.0.0",
-  "description": "A demo of using QrAr.js",
-  "main": "src/index.js",
-  "scripts": {
-    "start": "webpack-dev-server --progress",
-    "build": "rimraf dist && webpack"
-  },
-  "repository": {
-    "type": "git",
-    "url": "github.com/christikaes/qrar"
-  },
-  "keywords": [
-    "Demo",
-    "JavaScript",
-    "QR",
-    "Augmented",
-    "Reality"
-  ],
-  "author": "Christina Kayastha",
-  "license": "ISC",
-  "dependencies": {
-    "qrar": "file:../lib"
-  },
-  "devDependencies": {
-    "babel-core": "^6.26.3",
-    "babel-loader": "^7.1.5",
-    "babel-polyfill": "^6.26.0",
-    "babel-preset-env": "^1.7.0",
-    "copy-webpack-plugin": "^4.5.2",
-    "css-loader": "^1.0.0",
-    "extract-text-webpack-plugin": "^4.0.0-beta.0",
-    "html-webpack-plugin": "^3.2.0",
-    "style-loader": "^0.22.1",
-    "webpack": "^4.16.5",
-    "webpack-cli": "^3.1.0",
-    "webpack-dev-server": "^3.1.5"
-  }
+    "name": "qrarjs-demo",
+    "version": "1.0.0",
+    "description": "A demo of using QrAr.js",
+    "main": "src/index.js",
+    "scripts": {
+        "start": "webpack-dev-server --progress",
+        "build": "rimraf dist && webpack"
+    },
+    "repository": {
+        "type": "git",
+        "url": "github.com/christikaes/qrarjs"
+    },
+    "keywords": [
+        "Demo",
+        "JavaScript",
+        "QR",
+        "Augmented",
+        "Reality"
+    ],
+    "author": "Christina Kayastha",
+    "license": "ISC",
+    "dependencies": {
+        "qrarjs": "file:../lib"
+    },
+    "devDependencies": {
+        "babel-core": "^6.26.3",
+        "babel-loader": "^7.1.5",
+        "babel-polyfill": "^6.26.0",
+        "babel-preset-env": "^1.7.0",
+        "copy-webpack-plugin": "^4.5.2",
+        "css-loader": "^1.0.0",
+        "extract-text-webpack-plugin": "^4.0.0-beta.0",
+        "html-webpack-plugin": "^3.2.0",
+        "style-loader": "^0.22.1",
+        "webpack": "^4.16.5",
+        "webpack-cli": "^3.1.0",
+        "webpack-dev-server": "^3.1.5"
+    }
 }

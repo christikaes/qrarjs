@@ -5,7 +5,7 @@ import { locate } from "./locator";
 export function locateMarker(
     imageData: Uint8ClampedArray,
     width: number,
-    height: number
+    height: number,
 ) {
     // Binarize the ImageData
     const binarized = binarize(imageData, width, height);

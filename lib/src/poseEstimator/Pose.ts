@@ -1,4 +1,4 @@
-
+// Estimated Pose
 export default class Pose {
     constructor(
         private bestError,
@@ -6,7 +6,7 @@ export default class Pose {
         private bestTranslation,
         private alternativeError,
         private alternativeRotation,
-        private alternativeTranslation
+        private alternativeTranslation,
     ) { }
 
     public getRotationAxis() {
@@ -20,6 +20,7 @@ export default class Pose {
     }
 
     public getRotationAngle() {
+        // https://en.wikipedia.org/wiki/Rotation_matrix -> Determning the angle
         const rotationMat = this.bestRotation;
         const rotationTrace = rotationMat[0][0] + rotationMat[1][1] + rotationMat[2][2];
         return Math.acos((rotationTrace - 1) / 2);

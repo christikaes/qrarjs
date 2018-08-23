@@ -1,8 +1,8 @@
 export function renderCornerDebugger(root: HTMLElement, corners) {
-    let topLeft = document.getElementById("topLeft")
+    let topLeft = document.getElementById("topLeft");
     if (!topLeft) {
         topLeft = document.createElement("div");
-        topLeft.id = "topLeft"
+        topLeft.id = "topLeft";
         root.appendChild(topLeft);
     }
     topLeft.innerText = "TL";
@@ -13,10 +13,10 @@ export function renderCornerDebugger(root: HTMLElement, corners) {
     topLeft.style.width = "10px";
     topLeft.style.border = "1px solid blue";
 
-    let topRight = document.getElementById("topLeft")
+    let topRight = document.getElementById("topLeft");
     if (!topRight) {
         topRight = document.createElement("div");
-        topRight.id = "topRight"
+        topRight.id = "topRight";
         root.appendChild(topRight);
     }
     topRight.innerText = "TR";
@@ -27,10 +27,10 @@ export function renderCornerDebugger(root: HTMLElement, corners) {
     topRight.style.width = "10px";
     topRight.style.border = "1px solid red";
 
-    let bottomLeft = document.getElementById("bottomLeft")
+    let bottomLeft = document.getElementById("bottomLeft");
     if (!bottomLeft) {
         bottomLeft = document.createElement("div");
-        bottomLeft.id = "bottomLeft"
+        bottomLeft.id = "bottomLeft";
         root.appendChild(bottomLeft);
     }
     bottomLeft.innerText = "BL";
@@ -41,10 +41,10 @@ export function renderCornerDebugger(root: HTMLElement, corners) {
     bottomLeft.style.width = "10px";
     bottomLeft.style.border = "1px solid green";
 
-    let bottomRight = document.getElementById("bottomRight")
+    let bottomRight = document.getElementById("bottomRight");
     if (!bottomRight) {
         bottomRight = document.createElement("div");
-        bottomRight.id = "bottomRight"
+        bottomRight.id = "bottomRight";
         root.appendChild(bottomRight);
     }
     bottomRight.innerText = "BR";

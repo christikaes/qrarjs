@@ -7,13 +7,13 @@ const validatePose = (rotation, translation) => {
     const invalidRotation = Math.abs(rotation.x) < Math.PI / 2;
 
     return !hasNaN && !invalidRotation;
-}
+};
 
 export function estimatePose(
     corners: { bottomLeft: { x, y }, bottomRight: { x, y }, topRight: { x, y }, topLeft: { x, y } },
     width: number,
     height: number,
-    markerSize: number // in mm
+    markerSize: number, // in mm
 ) {
 
     // ORDER IS IMPORTANT
@@ -59,8 +59,6 @@ export function estimatePose(
 
     return { rotation, translation };
 }
-
-
 
 //     // IF Worker is supported:
 //     // import * as Worker from "./worker.js";

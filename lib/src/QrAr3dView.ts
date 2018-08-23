@@ -35,7 +35,7 @@ export default class QrAr3dView {
         // Create renderer
         this.renderer = new this.THREE.WebGLRenderer({ alpha: true });
         const rendererElement = this.renderer.domElement;
-        rendererElement.style.position = 'absolute';
+        rendererElement.style.position = "absolute";
         this.root.appendChild(rendererElement);
 
         // Create scene

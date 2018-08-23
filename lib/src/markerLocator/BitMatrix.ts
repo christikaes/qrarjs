@@ -1,3 +1,4 @@
+// Copyright (c) 2018 Cosmo Wolfe
 // Copyright: https://github.com/cozmo/jsQR/blob/master/src/BitMatrix.ts
 /* tslint:disable */
 

@@ -1,7 +1,6 @@
-// Copyright: https://github.com/cozmo/jsQR/blob/master/src/BitMatrix.ts
-// Modified to return the bottomRight also
+// Copyright (c) 2018 Cosmo Wolfe
+// https://github.com/cozmo/jsQR/blob/master/src/locator/index.ts
 /* tslint:disable */
-
 
 import { BitMatrix } from "./BitMatrix";
 

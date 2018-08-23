@@ -1,4 +1,4 @@
-import { QrAr3d, QrAr2d } from 'qrar';
+import { QrAr3d, QrAr2d } from 'qrarjs';
 const THREE = window.THREE;
 
 const $ = (selector) => {
